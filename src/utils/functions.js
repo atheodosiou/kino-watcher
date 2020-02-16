@@ -1,17 +1,18 @@
 const axios = require('axios');
 const mongoose = require('mongoose');
 const {KinoModel} =require('../models/last-and-active.model');
+const {logger} = require('./logger');
 
 const getData = async function(){
-    console.log('Getting data from opap...');
-    const {data} = await axios.get(process.env.API_URI);
-    const model = new KinoModel(data);
-    
+    logger.info('Getting data from opap...')
     try{
+        const {data} = await axios.get(process.env.API_URI);
+        const model = new KinoModel(data);
         await model.save();
-        console.log('Data saved successfully!\nWaiting for the next call...\n')
+
+        logger.info('Data saved successfully! Waiting for the next call...');
     }catch(error){
-        console.log('Error while saving the data to db!', error)
+        logger.error('==ERROR=='+JSON.stringify(error,null,2));
     }
 };
 
