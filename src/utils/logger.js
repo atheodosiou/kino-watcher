@@ -1,9 +1,8 @@
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, label, prettyPrint } = format;
+const { combine } = format;
 
 module.exports.logger = createLogger({
     format: combine(
-        timestamp(),
         format.simple()
     ),
     transports: [

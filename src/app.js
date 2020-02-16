@@ -1,16 +1,17 @@
 const {getData,connectToDb} = require('./utils/functions');
 const {logger} =require('./utils/logger');
 const cron = require('node-cron');
+const {createMessage} = require('./utils/create-messages');
 require('dotenv').config();
 
 
 module.exports.app = async function () {
-    logger.info('Trying to connect to db...')
+    logger.info(createMessage('Trying to connect to db...'));
     try {
         await connectToDb(process.env.DB_URI);
-        logger.info('Connected to db! Waiting for the first call...')
-        cron.schedule('* * * * *', getData); //*/5 9-23 * * 1-5'
+        logger.info(createMessage('Connected to db! Waiting for the first call...'))
+        cron.schedule('*/5 9-23 * * 1-5', getData);
       } catch (error) {
-        logger.error('==ERROR=='+JSON.stringify(error,null,2));
+        logger.error(createMessage(JSON.stringify(error,null,2)));
       }
 };
