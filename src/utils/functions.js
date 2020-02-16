@@ -1,6 +1,7 @@
 const axios = require('axios');
 const mongoose = require('mongoose');
 const {KinoModel} =require('../models/last-and-active.model');
+
 const getData = async function(){
     console.log('Getting data from opap...');
     const {data} = await axios.get(process.env.API_URI);

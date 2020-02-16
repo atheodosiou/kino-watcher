@@ -9,7 +9,7 @@ module.exports.app = async function () {
     try {
         await connectToDb(process.env.DB_URI);
         console.log('Connected to db.\nWaiting for the first call.\n')
-        cron.schedule('* * * * *', getData);
+        cron.schedule('*/5 9-23 * * 1-5', getData);
       } catch (error) {
         console.log('==ERROR==',error)
       }
