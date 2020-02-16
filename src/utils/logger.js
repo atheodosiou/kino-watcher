@@ -3,9 +3,7 @@ const { combine, timestamp, label, prettyPrint } = format;
 
 module.exports.logger = createLogger({
     format: combine(
-        label({ label: 'KINO-WHATCHER' }),
         timestamp(),
-        // prettyPrint()
         format.simple()
     ),
     transports: [
