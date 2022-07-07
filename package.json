@@ -19,7 +19,7 @@
   "homepage": "https://github.com/atheodosiou/kino-watcher#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.9.1",
     "node-cron": "^2.0.3",
     "nodemon": "^2.0.2",
